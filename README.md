@@ -1,6 +1,8 @@
 # TodoApp
 
-#Getting started 
+## Getting started 
+
+Make sure you have the Angular CLI installed globally. I used npm to manage the dependencies, run `npm install` after cloning the repo to resolve all dependencies (might take a minute).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.2.
 
@@ -27,3 +29,14 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Functionality overview
+
+**General Functionality:**
+
++ CRUD task
++ delete a task by cliking on an x icon
++ edit task by clicking on the task name and  pressing enter button to save
++ add new task by typing a task name and pressing enter on the keyboard
++ switch between all tasks, completed tasks  and active tasks 
+
