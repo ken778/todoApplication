@@ -10,6 +10,7 @@ import { TodosService } from "../../services/todos.service";
 export class HeaderComponent {
 
     text: string = ""
+    isInputValid: boolean = false
 
     constructor(private todoService: TodosService) { 
        
@@ -22,8 +23,13 @@ export class HeaderComponent {
         }
     }
     addTodo(): void {
-        this.todoService.addTodo(this.text)
-        this.text = "";
+        if(this.text==''){
+            alert("can not submit an empty task, please enter a task name");
+        }else{
+            this.todoService.addTodo(this.text)
+            this.text = "";
+        }
+       
        
     }
 }
