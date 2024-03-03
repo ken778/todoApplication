@@ -7,6 +7,7 @@ import { MainComponent } from './components/main/main.component';
 import { CommonModule } from '@angular/common';
 import { TodoComponent } from './components/todo/todo.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes:Routes=[
     {
@@ -15,7 +16,7 @@ const routes:Routes=[
     }
 ] 
 @NgModule({
-    declarations: [ TodosComponent, HeaderComponent, MainComponent, TodoComponent],
+    declarations: [ TodosComponent, HeaderComponent, MainComponent, TodoComponent, FooterComponent],
     imports:[BrowserModule,CommonModule,RouterModule.forChild(routes)],
     providers:[TodosService]
     
