@@ -252,6 +252,7 @@ body {
 .todo-list li .edit {
 	display: none;
 }
+/* extra */
 
 .todo-list li.editing:last-child {
 	margin-bottom: -1px;

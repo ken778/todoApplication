@@ -7,8 +7,9 @@ import { FilterEnum } from "../types/filter.enum";
 export class TodosService {
     todos$ = new BehaviorSubject<TodoInterface[]>([]);
     filter$ = new BehaviorSubject<FilterEnum>(FilterEnum.all);
-
-    addTodo(text: string):void{
+    
+    //add a new task
+    addTodo(text: string): void {
         const newTodo: TodoInterface = {
             text,
             isCompleted: false,
@@ -17,21 +18,59 @@ export class TodosService {
         const updatedTodos = [...this.todos$.getValue(), newTodo]
         this.todos$.next(updatedTodos)
     }
+    //mark a task as completed
     toggleAll(isCompleted: boolean): void {
         console.log('isCompleted', isCompleted);
         const updatedTodos = this.todos$.getValue().map((todo) => {
-          return {
-            ...todo,
-            isCompleted,
-          };
+            return {
+                ...todo,
+                isCompleted,
+            };
         });
         this.todos$.next(updatedTodos);
-      }
-      
-      //changing filter
-      changeFilter(filterName: FilterEnum): void {
-        this.filter$.next(filterName);
-      }
+    }
 
-    
+    //changing filter
+    changeFilter(filterName: FilterEnum): void {
+        this.filter$.next(filterName);
+    }
+   
+    //edit a task
+    changeTodo(id: string, text: string): void {
+        const updatedTodos = this.todos$.getValue().map((todo) => {
+            if (todo.id === id) {
+                return {
+                    ...todo,
+                    text,
+                };
+            }
+
+            return todo;
+        });
+        this.todos$.next(updatedTodos);
+    }
+
+    //delete a task
+    removeTodo(id: string): void {
+        const updatedTodos = this.todos$
+            .getValue()
+            .filter((todo) => todo.id !== id);
+
+        this.todos$.next(updatedTodos);
+    }
+   
+    toggleTodo(id: string): void {
+        const updatedTodos = this.todos$.getValue().map((todo) => {
+            if (todo.id === id) {
+                return {
+                    ...todo,
+                    isCompleted: !todo.isCompleted,
+                };
+            }
+            return todo;
+        });
+        this.todos$.next(updatedTodos);
+    }
+
+
 }
